@@ -1,0 +1,23 @@
+/* Главный файл стилей */
+@import 'variables.css';
+@import 'base.css';
+
+/* Компоненты */
+@import 'components/buttons.css';
+@import 'components/header.css';
+@import 'components/footer.css';
+@import 'components/lightbox.css';
+
+/* Секции */
+@import 'sections/hero.css';
+@import 'sections/cases.css';
+@import 'sections/services.css';
+@import 'sections/process.css';
+@import 'sections/about.css';
+@import 'sections/faq.css';
+@import 'sections/cta.css';
+@import 'sections/value.css';
+@import 'sections/ai-benefits.css';
+
+/* Временный файл адаптивности */
+@import 'responsive.css';
