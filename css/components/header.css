@@ -1,0 +1,473 @@
+/* ============================================
+   Header
+   ============================================ */
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    min-height: 68px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-shrink: 1;
+    color: var(--color-text);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+}
+
+.logo-sub {
+    color: var(--color-text-muted);
+    font-size: 0.68rem;
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+.nav,
+.header-btn {
+    display: none;
+}
+
+.mobile-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    box-shadow: var(--shadow-sm);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: var(--transition-colors), var(--transition-transform), box-shadow 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.mobile-menu-toggle:active {
+    transform: scale(0.97);
+}
+
+.mobile-menu-toggle:focus-visible,
+.close-menu:focus-visible,
+.nav-list a:focus-visible {
+    outline: 2px solid rgba(95, 125, 156, 0.35);
+    outline-offset: 3px;
+}
+
+/* ============================================
+   Mobile menu
+   ============================================ */
+
+body.menu-open {
+    overflow: hidden;
+}
+
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-menu);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0;
+    background: rgba(15, 23, 32, 0);
+    backdrop-filter: blur(0);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 0.28s ease,
+        visibility 0.28s ease,
+        background-color 0.28s ease,
+        backdrop-filter 0.28s ease;
+}
+
+.mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    background: rgba(15, 23, 32, 0.42);
+    backdrop-filter: blur(8px);
+}
+
+/* СТАЛО */
+.mobile-menu-panel {
+    width: 100%;
+    min-height: min(78vh, 680px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 16px 24px;
+    background: linear-gradient(
+        180deg,
+        #161B22 0%,
+        #0D1117 100%
+    );
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.5);
+    transform: translateY(100%);
+    transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-menu.active .mobile-menu-panel {
+    transform: translateY(0);
+}
+
+.close-menu {
+    align-self: flex-end;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    box-shadow: var(--shadow-sm);
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: var(--transition-colors), var(--transition-transform), box-shadow 0.3s ease;
+}
+
+.close-menu:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.close-menu:active {
+    transform: scale(0.97);
+}
+
+.mobile-menu-list {
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mobile-menu-list li {
+    margin: 0;
+}
+
+.mobile-menu-list a {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-border-soft);
+    color: var(--color-text);
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.3;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.mobile-menu-list a:hover {
+    color: var(--color-primary);
+}
+
+.mobile-menu-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 24px;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .header {
+        min-height: 74px;
+    }
+
+    .header-container {
+        min-height: 74px;
+        gap: 24px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .logo-sub {
+        font-size: 0.75rem;
+    }
+
+    .mobile-menu-panel {
+        min-height: auto;
+        max-width: 520px;
+        margin-bottom: 16px;
+        padding: 24px 24px 28px;
+        border-radius: 28px;
+    }
+}
+
+@media (min-width: 1100px) {
+    .header {
+        min-height: 76px;
+    }
+
+    .header-container {
+        min-height: 76px;
+    }
+
+    .logo {
+        font-size: 1.75rem;
+    }
+
+    .logo-sub {
+        font-size: 0.78rem;
+    }
+
+    .nav {
+        display: block;
+    }
+
+    .nav-list {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .nav-list a {
+        color: var(--color-text-soft);
+        font-size: 0.98rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: var(--transition-colors);
+    }
+
+    .nav-list a:hover {
+        color: var(--color-text);
+    }
+
+    /* 1. Обновляем базовый стиль ссылки */
+.nav-list a {
+    position: relative; /* ОБЯЗАТЕЛЬНО: нужно для позиционирования линии */
+    color: var(--color-text-soft);
+    font-size: 0.98rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition-colors);
+    padding-bottom: 4px; /* Даем немного пространства для линии снизу */
+}
+
+.nav-list a:hover {
+    color: #0F172A; /* При наведении текст становится более контрастным/черным */
+}
+
+/* 2. ДОБАВЛЯЕМ скрытую линию (такую же, как в заголовке) */
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Изначально линия скрыта (ширина 0) */
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #1E40AF, #06B6D4); /* Тот же градиент! */
+    /* Плавная, "дорогая" анимация расширения */
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+
+/* 3. ДОБАВЛЯЕМ эффект при наведении: линия вырастает */
+.nav-list a:hover::after {
+    width: 100%; /* Линия заполняет всю ширину слова */
+}
+
+    .header-btn {
+        display: inline-flex;
+    }
+
+    .mobile-menu-toggle,
+    .mobile-menu {
+        display: none;
+    }
+}
+
+/* Glassmorphism header */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.68);
+    backdrop-filter: blur(14px) saturate(145%);
+    -webkit-backdrop-filter: blur(14px) saturate(145%);
+    border-bottom: 1px solid rgba(95, 125, 156, 0.14);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.7) inset,
+        0 12px 34px rgba(26, 43, 62, 0.045);
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(95, 125, 156, 0.42),
+        transparent
+    );
+    opacity: 0.45;
+}
+
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.82);
+    border-bottom-color: rgba(95, 125, 156, 0.22);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.8) inset,
+        0 16px 46px rgba(26, 43, 62, 0.09),
+        0 0 28px rgba(95, 125, 156, 0.08);
+}
+
+.header.scrolled::after {
+    opacity: 0.75;
+}
+
+.header-container {
+    position: relative;
+}
+
+.logo,
+.nav-list a,
+.header-btn {
+    position: relative;
+    z-index: 1;
+}
+
+@supports not ((backdrop-filter: blur(14px)) or (-webkit-backdrop-filter: blur(14px))) {
+    .header {
+        background: rgba(255, 255, 255, 0.94);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header {
+        transition: none;
+    }
+}
+
+/* =============================================
+   DARK THEME — перекрытие для шапки
+   ============================================= */
+
+/* Фон шапки — тёмный, полупрозрачный со стеклянным эффектом */
+.header {
+    background: rgba(13, 17, 23, 0.7) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Состояние после скролла — чуть плотнее */
+.header.scrolled,
+.header.is-scrolled {
+    background: rgba(13, 17, 23, 0.9) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Логотип */
+.header .logo,
+.logo-name,
+.header__logo {
+    color: #E6EDF3 !important;
+}
+
+/* Подпись под логотипом (Web & AI решения...) */
+.logo-tagline,
+.header .logo-sub {
+    color: #8B949E !important;
+}
+
+/* Пункты навигации */
+.nav-link,
+.header nav a,
+.main-nav a {
+    color: #C9D1D9 !important;
+    transition: color 0.25s ease;
+}
+
+.nav-link:hover,
+.header nav a:hover,
+.main-nav a:hover {
+    color: #FFFFFF !important;
+}
+
+/* Кнопка "Обсудить проект" в шапке */
+.header .btn,
+.header .button,
+.nav-cta {
+    background: #E6EDF3 !important;
+    color: #0D1117 !important;        /* тёмный текст на светлой кнопке */
+    border: none !important;
+}
+
+.header .btn:hover,
+.header .button:hover,
+.nav-cta:hover {
+    background: #FFFFFF !important;
+    color: #0D1117 !important;
+}
+
+/* Иконка бургер-меню (мобайл) */
+.mobile-menu-toggle span,
+.burger span {
+    background: #E6EDF3 !important;
+}
+
+/* DARK THEME — мобильное меню */
+
+/* Ссылки в мобильном меню */
+.mobile-menu-list a {
+    color: #E6EDF3 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.mobile-menu-list a:hover {
+    color: #58A6FF !important;
+}
+
+/* Кнопка "Закрыть" (✕) */
+.close-menu {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #E6EDF3 !important;
+}
+
+/* CTA "Обсудить проект" внизу меню — светлая кнопка, тёмный текст */
+.mobile-menu-cta {
+    background: #E6EDF3 !important;
+    color: #0D1117 !important;
+    border: none !important;
+}
