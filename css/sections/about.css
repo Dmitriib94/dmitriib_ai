@@ -1,0 +1,256 @@
+/* ============================================
+   About
+   ============================================ */
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.about-row {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.about-title {
+    margin-bottom: 0;
+}
+
+.about-body {
+    max-width: 720px;
+}
+
+.about-body p {
+    margin: 0 0 1rem;
+    color: var(--color-text-soft);
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.about-body p:last-child {
+    margin-bottom: 0;
+}
+
+.about-image {
+    width: 100%;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 24px;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.015);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-border-hover);
+}
+
+@media (min-width: 768px) {
+    .about-container {
+        gap: 36px;
+    }
+
+    .about-row {
+        gap: 36px;
+    }
+
+    .about-body p {
+        font-size: 1.05rem;
+    }
+
+    .about-image img {
+        border-radius: 28px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .about-container {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.9fr);
+        gap: 24px 48px;
+        align-items: start;
+    }
+
+    .about-title {
+        grid-column: 1;
+    }
+
+    .about-row {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.9fr);
+        gap: 24px 48px;
+        align-items: start;
+    }
+
+    .about-body {
+        grid-column: 1;
+        grid-row: 1;
+        max-width: none;
+    }
+
+    .about-image {
+        grid-column: 2;
+        grid-row: 1;
+        position: sticky;
+        top: var(--about-sticky-top, 84px);
+        z-index: 1;
+        align-self: start;
+    }
+
+    .about-body p {
+        font-size: 1.08rem;
+        line-height: 1.8;
+    }
+
+    .about-image img {
+        border-radius: 32px;
+        max-height: calc(100dvh - var(--about-sticky-top, 84px) - 32px);
+    }
+}
+
+@media (min-width: 1280px) {
+    .about-container {
+        gap: 28px 60px;
+    }
+
+    .about-body {
+        max-width: 760px;
+    }
+
+    .about-body p {
+        font-size: 1.1rem;
+    }
+
+    .about-image img {
+        border-radius: 36px;
+    }
+}
+
+/* Вступление */
+.about-intro {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 28px;
+}
+
+.about-intro strong {
+    color: var(--color-text);
+}
+
+/* Принципы */
+.about-principles {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.about-principle {
+    display: flex;
+    gap: 14px;
+    padding: 16px 18px;
+    border: 1px solid var(--color-border);
+}
+
+.about-principle:hover {
+    border-color: var(--color-border-hover);
+}
+
+.about-principle-arrow {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid var(--color-border-soft);
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1;
+    color: var(--color-accent);
+    flex-shrink: 0;
+}
+
+.about-principle-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 4px;
+}
+
+.about-principle-text {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--color-text-soft);
+    margin: 0;
+}
+
+/* Позиция по AI */
+.about-ai-note {
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--glass-border);
+    border-left: 3px solid var(--color-accent);
+    transition: var(--transition-colors), border-color 0.3s ease;
+}
+
+.about-ai-note p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--color-text);
+}
+
+.about-ai-note strong {
+    color: var(--color-accent);
+}
+
+/* Граница специализации */
+.about-focus {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--color-text-soft);
+    margin-bottom: 24px;
+}
+
+/* Факты — пилюли */
+.about-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+}
+
+.about-facts li {
+    font-size: 0.82rem;
+    color: var(--color-text);
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--glass-surface-muted);
+    border: 1px solid var(--glass-border);
+}
+
+/* Переход к контакту */
+.about-cta-text {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    margin-bottom: 16px;
+}
+.about-cta-btn { display: inline-flex; }
+
+@media (max-width: 768px) {
+    .about-facts li { font-size: 0.78rem; }
+}

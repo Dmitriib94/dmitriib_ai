@@ -1,0 +1,32 @@
+/* Главный файл стилей — только импорты (порядок = каскад) */
+
+/* 0. Шрифты (font-display: swap) */
+@import 'base/fonts.css';
+
+/* 1. Токены и база */
+@import 'tokens.css';
+@import 'base/reset.css';
+@import 'base/layout.css';
+@import 'base/typography.css';
+
+/* 2. Компоненты */
+@import 'components/buttons.css';
+@import 'components/header.css';
+@import 'components/footer.css';
+@import 'components/lightbox.css';
+@import 'components/global-background.css';
+@import 'components/reveal.css';
+
+/* 3. Секции */
+@import 'sections/hero.css';
+@import 'sections/cases.css';
+@import 'sections/services.css';
+@import 'sections/process.css';
+@import 'sections/about.css';
+@import 'sections/faq.css';
+@import 'sections/cta.css';
+@import 'sections/results.css';
+
+/* 4. Переопределения после секций */
+@import 'components/card.css';
+@import 'base/utilities.css';

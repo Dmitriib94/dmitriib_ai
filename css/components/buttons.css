@@ -1,0 +1,181 @@
+/* =========================================================
+   Кнопки — единый источник стилей (тёмная тема)
+   ========================================================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 0.9rem 1.4rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-btn);
+    font-size: 0.98rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        var(--transition-colors),
+        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.35s ease,
+        backdrop-filter 0.35s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+    transform: scale(0.985);
+}
+
+.btn:focus-visible {
+    outline: 2px solid rgba(88, 166, 255, 0.45);
+    outline-offset: 3px;
+}
+
+/* Primary — blur + белая обводка + акцент */
+.btn-primary,
+.cta-telegram-btn {
+    position: relative;
+    overflow: hidden;
+    background: var(--btn-primary-bg);
+    backdrop-filter: blur(var(--btn-blur));
+    -webkit-backdrop-filter: blur(var(--btn-blur));
+    color: #ffffff;
+    border-color: var(--btn-primary-border);
+    box-shadow: var(--shadow-btn-primary);
+}
+
+.btn-primary:hover,
+.cta-telegram-btn:hover {
+    background: var(--btn-primary-bg-hover);
+    color: #ffffff;
+    border-color: var(--btn-primary-border-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-btn-primary-hover);
+}
+
+.btn-primary:active,
+.cta-telegram-btn:active {
+    transform: translateY(0) scale(0.985);
+}
+
+.btn-primary::before,
+.cta-telegram-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.18) 42%,
+        transparent 72%
+    );
+    transform: translateX(-120%);
+    transition: transform 0.65s ease;
+    pointer-events: none;
+}
+
+.btn-primary:hover::before,
+.cta-telegram-btn:hover::before {
+    transform: translateX(120%);
+}
+
+/* Secondary — стекло + тонкая рамка */
+.btn-secondary {
+    position: relative;
+    overflow: hidden;
+    background: var(--btn-secondary-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    color: var(--color-text);
+    border-color: var(--btn-secondary-border);
+    box-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.btn-secondary:hover {
+    background: var(--btn-secondary-bg-hover);
+    border-color: var(--btn-secondary-border-hover);
+    color: var(--color-text);
+    transform: translateY(-1px);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:active {
+    transform: translateY(0) scale(0.985);
+}
+
+/* Кнопка в шапке — только размеры (цвета от .btn-primary) */
+.header-btn {
+    min-height: 46px;
+    padding: 0.75rem 1.15rem;
+}
+
+/* Telegram в блоке контактов — layout */
+.cta-telegram-btn {
+    width: 100%;
+    min-height: 52px;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .btn-primary,
+    .cta-telegram-btn {
+        background: rgba(31, 111, 235, 0.82);
+    }
+
+    .btn-primary:hover,
+    .cta-telegram-btn:hover {
+        background: rgba(47, 129, 247, 0.92);
+    }
+
+    .btn-secondary {
+        background: var(--color-surface);
+    }
+
+    .btn-secondary:hover {
+        background: var(--color-surface-muted);
+    }
+}
+
+@media (min-width: 768px) {
+    .btn {
+        min-height: 54px;
+        padding: 0.95rem 1.6rem;
+        font-size: 1rem;
+    }
+
+    .header-btn {
+        min-height: 46px;
+        padding: 0.72rem 1.2rem;
+    }
+
+    .cta-telegram-btn {
+        width: auto;
+        min-width: 280px;
+        padding: 1rem 1.8rem;
+        font-size: 1.02rem;
+    }
+}
+
+@media (min-width: 1100px) {
+    .btn {
+        padding: 1rem 1.75rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-primary:hover,
+    .cta-telegram-btn:hover,
+    .btn-secondary:hover {
+        transform: none;
+    }
+
+    .btn-primary::before,
+    .cta-telegram-btn::before {
+        transition: none;
+    }
+}

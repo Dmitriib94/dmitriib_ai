@@ -1,0 +1,101 @@
+/* =========================================================
+   Scroll reveal — появление блоков, иконок и текста
+   ========================================================= */
+
+.reveal-card {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.45s ease;
+    transition-delay: calc(var(--reveal-i, 0) * 80ms);
+    will-change: opacity, transform;
+}
+
+.reveal-card.is-visible {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+.reveal-card.is-visible:hover {
+    transform: translateY(-6px);
+}
+
+.reveal-inner {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+        opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-icon.reveal-inner {
+    transform: translateY(14px) scale(0.94);
+}
+
+.reveal-card.is-visible .reveal-inner {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-card.is-visible .reveal-icon.reveal-inner {
+    transform: translateY(0) scale(1);
+}
+
+.reveal-card.is-visible .reveal-inner:nth-child(1) {
+    transition-delay: calc(var(--reveal-i, 0) * 80ms + 0.06s);
+}
+
+.reveal-card.is-visible .reveal-inner:nth-child(2) {
+    transition-delay: calc(var(--reveal-i, 0) * 80ms + 0.14s);
+}
+
+.reveal-card.is-visible .reveal-inner:nth-child(3) {
+    transition-delay: calc(var(--reveal-i, 0) * 80ms + 0.22s);
+}
+
+.reveal-card.is-visible .reveal-inner:nth-child(4) {
+    transition-delay: calc(var(--reveal-i, 0) * 80ms + 0.3s);
+}
+
+/* Заголовки секций */
+.reveal-heading {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-heading.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* About — две колонки */
+.reveal-block {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-block.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-card,
+    .reveal-inner,
+    .reveal-heading,
+    .reveal-block {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}

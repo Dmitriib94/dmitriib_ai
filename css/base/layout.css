@@ -1,0 +1,109 @@
+/* =========================================================
+   Layout — контейнер, секции, заголовки блоков
+   ========================================================= */
+
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+section {
+    padding: var(--section-padding-mobile) 0;
+}
+
+section:not(.hero) {
+    position: relative;
+    z-index: 5;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 0.9rem;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-soft);
+    max-width: var(--text-max-width);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
+
+/* Шапки блоков с меткой (cases, results) */
+.cases-header,
+.results-header {
+    margin-bottom: 2.5rem;
+}
+
+.cases-label,
+.results-label {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+    opacity: 0.85;
+}
+
+.cases-header .section-title,
+.results-header .section-title {
+    margin-bottom: 0.6rem;
+}
+
+.cases-header .section-subtitle,
+.results-header .section-subtitle {
+    margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 var(--container-padding-tablet);
+    }
+
+    section {
+        padding: var(--section-padding-tablet) 0;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.08rem;
+        margin-bottom: 3rem;
+    }
+
+    .cases-header,
+    .results-header {
+        margin-bottom: 3rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    section {
+        padding: var(--section-padding-desktop) 0;
+    }
+
+    .section-title {
+        font-size: 2.4rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 3.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .cases-header {
+        margin-bottom: 3.5rem;
+    }
+}

@@ -1,0 +1,168 @@
+/* =========================================================
+   Results — блок с цифрами
+   ========================================================= */
+
+/* Сетка карточек */
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 600px) {
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .results-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .results-card--wide {
+        grid-column: span 1;
+    }
+}
+
+/* Карточка */
+.results-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: 32px 28px 28px;
+    cursor: default;
+}
+
+/* hover lift — см. components/card.css */
+
+/* Акцентная карточка (первая) */
+.results-card--accent {
+    box-shadow:
+        0 8px 32px rgba(31, 111, 235, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.results-card--accent:hover {
+    box-shadow:
+        0 20px 50px rgba(31, 111, 235, 0.35),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.results-card--accent .results-number {
+    color: #ffffff;
+}
+
+.results-card--accent .results-desc {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.results-card--accent .results-card-bg-text {
+    color: rgba(255, 255, 255, 0.04);
+}
+
+/* Широкая карточка (четвёртая) */
+@media (min-width: 600px) {
+    .results-card--wide {
+        grid-column: span 2;
+    }
+}
+
+@media (min-width: 1024px) {
+    .results-card--wide {
+        grid-column: span 1;
+    }
+}
+
+/* Внутренний контент */
+.results-card-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Большое число */
+.results-number {
+    font-size: clamp(2.6rem, 5vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--color-text);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Описание под числом */
+.results-desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--color-text-soft);
+    max-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Бейдж PageSpeed */
+.results-badge {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 3px 8px;
+}
+
+/* Декоративный фоновый текст */
+.results-card-bg-text {
+    position: absolute;
+    bottom: -12px;
+    right: -8px;
+    font-size: clamp(4rem, 10vw, 7rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: rgba(15, 23, 42, 0.028);
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+/* Сноска */
+.results-footnote {
+    margin-top: 1.5rem;
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    opacity: 0.7;
+}
+
+/* Адаптив */
+@media (min-width: 768px) {
+    .results-grid {
+        gap: 20px;
+    }
+
+    .results-card {
+        padding: 36px 32px 32px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .results-grid {
+        gap: 24px;
+    }
+
+    .results-card {
+        padding: 40px 36px 36px;
+    }
+}

@@ -1,0 +1,171 @@
+/* =========================================================
+   Стеклянные текстовые карточки
+   ========================================================= */
+
+.service-card,
+.cta-block,
+.accordion-item,
+.results-card,
+.about-principle,
+.about-ai-note {
+    position: relative;
+    background: var(--glass-surface);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-color: var(--glass-border);
+}
+
+/* Тонкая синяя линия слева при hover */
+.service-card::before,
+.cta-block::before,
+.accordion-item::before,
+.results-card::before,
+.about-principle::before,
+.about-ai-note::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--card-accent-line);
+    border-radius: inherit;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background: var(--color-accent);
+    box-shadow: 0 0 12px rgba(88, 166, 255, 0.45);
+    opacity: 0;
+    transform: scaleY(0.5);
+    transform-origin: center;
+    transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.service-card:hover::before,
+.cta-block:hover::before,
+.accordion-item:hover::before,
+.results-card:hover::before,
+.about-principle:hover::before,
+.about-ai-note:hover::before,
+.service-card.is-visible:hover::before,
+.cta-block.is-visible:hover::before,
+.results-card.is-visible:hover::before,
+.about-principle.is-visible:hover::before,
+.about-ai-note.is-visible:hover::before {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.service-card,
+.about-principle {
+    border-radius: var(--radius-card-lg);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-card);
+    overflow: hidden;
+}
+
+.service-card:hover,
+.about-principle:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.cta-block:hover,
+.accordion-item:hover,
+.about-ai-note:hover {
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.cta-block {
+    transition: var(--transition-colors), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.45s ease, border-color 0.3s ease;
+}
+
+.cta-block.is-visible:hover {
+    transform: translateY(-4px);
+}
+
+.results-card {
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.results-card:hover,
+.results-card.is-visible:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* Акцентная карточка — полупрозрачный градиент поверх blur */
+.results-card--accent {
+    background: linear-gradient(
+        135deg,
+        rgba(31, 111, 235, 0.72),
+        rgba(26, 58, 107, 0.58)
+    );
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.service-icon,
+.accordion-icon,
+.about-principle-arrow {
+    background-color: var(--glass-surface-muted);
+    box-shadow: var(--icon-glow);
+    transition:
+        background-color 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.service-card:hover .service-icon,
+.accordion-item:hover .accordion-icon,
+.about-principle:hover .about-principle-arrow,
+.service-card.is-visible:hover .service-icon,
+.about-principle.is-visible:hover .about-principle-arrow {
+    box-shadow: var(--icon-glow-hover);
+}
+
+.accordion-item.active .accordion-icon {
+    background-color: var(--glass-surface);
+    box-shadow: var(--icon-glow-hover);
+}
+
+.results-badge {
+    background: var(--glass-surface-muted);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .service-card,
+    .cta-block,
+    .accordion-item,
+    .results-card,
+    .about-principle,
+    .about-ai-note {
+        background: var(--color-surface);
+    }
+
+    .results-card--accent {
+        background: linear-gradient(135deg, #1F6FEB, #1A3A6B);
+    }
+
+    .service-icon,
+    .accordion-icon,
+    .about-principle-arrow,
+    .results-badge {
+        background-color: var(--color-surface-muted);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-card::before,
+    .cta-block::before,
+    .accordion-item::before,
+    .results-card::before,
+    .about-principle::before,
+    .about-ai-note::before {
+        transition: opacity 0.2s ease;
+        transform: scaleY(1);
+    }
+}
+
