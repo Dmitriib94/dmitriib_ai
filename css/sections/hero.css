@@ -1,0 +1,226 @@
+/* =============================================
+   HERO — Основные стили + Технологичные эффекты
+   ============================================= */
+
+.hero {
+    position: relative;
+    padding: 40px 0 72px;
+    overflow-x: clip;
+}
+
+/* Свечение за контейнером */
+.hero-container {
+    position: relative;
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;           /* желаемый отступ между колонками на мобилках */
+    position: relative;
+}
+
+.hero-container::before {
+    content: "";
+    position: absolute;
+    right: -40px;
+    top: 12%;
+    width: min(380px, 90vw);
+    height: min(380px, 90vw);
+    border-radius: 9999px;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(95, 125, 156, 0.26), transparent 65%);
+    filter: blur(18px);
+    animation: heroGlowPulse 8s ease-in-out infinite;
+}
+
+/* Основное содержимое */
+.hero-content {
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 2.35rem;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    max-width: 12ch;
+    position: relative;
+}
+
+.hero-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 140px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #1E40AF, #06B6D4);
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text-soft);
+    margin-bottom: 1.75rem;
+    max-width: 38ch;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.hero-buttons .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Изображение + свечение */
+.hero-image {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+}
+
+.hero-image::before {
+    content: "";
+    position: absolute;
+    inset: -22px;
+    z-index: -1;
+    border-radius: 32px;
+    background:
+        radial-gradient(circle at 30% 25%, rgba(95, 125, 156, 0.28), transparent 45%),
+        radial-gradient(circle at 75% 75%, rgba(26, 43, 62, 0.16), transparent 50%);
+    filter: blur(22px);
+    animation: heroImageGlow 7s ease-in-out infinite;
+}
+
+.hero-image img {
+    --hero-img-x: 0px;
+    --hero-img-y: 0px;
+    transform: translate3d(var(--hero-img-x), var(--hero-img-y), 0);
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+/* Анимации */
+@keyframes heroGridMove {
+    from { background-position: 0 0, 0 0; }
+    to   { background-position: 44px 44px, 44px 44px; }
+}
+
+@keyframes heroGlowPulse {
+    0%, 100% { opacity: 0.55; transform: scale(0.95); }
+    50%      { opacity: 0.95; transform: scale(1.08); }
+}
+
+@keyframes heroImageGlow {
+    0%, 100% { opacity: 0.6;  transform: scale(1); }
+    50%      { opacity: 0.85; transform: scale(1.06); }
+}
+
+/* =============================================
+   Адаптив
+   ============================================= */
+
+@media (min-width: 768px) {
+    .hero {
+        padding: 52px 0 88px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        max-width: 11ch;
+    }
+
+    .hero-subtitle {
+        font-size: 1.08rem;
+        max-width: 52ch;
+        margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: auto;
+    }
+
+    .hero-buttons .btn {
+        width: auto;
+    }
+
+    .hero-container::before {
+        right: -100px;
+        top: 10%;
+        width: 420px;
+        height: 420px;
+    }
+}
+
+@media (min-width: 1100px) {
+    .hero {
+        padding: 68px 0 110px;
+    }
+
+    .hero-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 56px;
+    }
+
+    .hero-content {
+        flex: 1;
+        max-width: 620px;
+    }
+
+    .hero-title {
+        font-size: 3.65rem;
+        margin-bottom: 1.4rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.18rem;
+        margin-bottom: 2.4rem;
+        max-width: 58ch;
+    }
+
+    .hero-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .hero-image img {
+        max-width: 460px;
+        border-radius: 28px;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .hero-image::before {
+        inset: -32px;
+    }
+}
+
+/* Отключаем анимации при желании пользователя */
+@media (prefers-reduced-motion: reduce) {
+    .hero::after,
+    .hero-container::before,
+    .hero-image::before,
+    .hero-image img {
+        animation: none !important;
+    }
+
+    .hero-image:hover img {
+        transform: none;
+    }
+}
